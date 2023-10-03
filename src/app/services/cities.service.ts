@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { City } from '../models/city';
 import { HttpClient, HttpHandler, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
-const API_BASE_URL: string = 'https://localhost:7079/api/';
+const API_BASE_URL: string = 'https://localhost:7079/api/v1';
 @Injectable({
   providedIn: 'root',
 })
@@ -19,7 +19,7 @@ export class CitiesService {
   public postCity(city: City): Observable<City> {
     let headers = new HttpHeaders();
     headers = headers.append('Authorization', 'Bearer mytoken');
-    return this.httpClient.post<City>(`${API_BASE_URL}v1/cities`, city, {
+    return this.httpClient.post<City>(`${API_BASE_URL}/cities`, city, {
       headers: headers,
     });
   }
