@@ -12,7 +12,7 @@ export class CitiesService {
   public getCities(): Observable<City[]> {
     let headers = new HttpHeaders();
     headers = headers.append('Authorization', 'Bearer mytoken');
-    return this.httpClient.get<City[]>(`${API_BASE_URL}v1/cities`, {
+    return this.httpClient.get<City[]>(`${API_BASE_URL}/cities`, {
       headers: headers,
     });
   }
@@ -27,7 +27,7 @@ export class CitiesService {
     let headers = new HttpHeaders();
     headers = headers.append('Authorization', 'Bearer mytoken');
     return this.httpClient.put<string>(
-      `${API_BASE_URL}v1/cities/${city.cityID}`,
+      `${API_BASE_URL}/cities/${city.cityID}`,
       city,
       {
         headers: headers,
@@ -37,11 +37,8 @@ export class CitiesService {
   public deleteCity(cityID: string | null): Observable<string> {
     let headers = new HttpHeaders();
     headers = headers.append('Authorization', 'Bearer mytoken');
-    return this.httpClient.delete<string>(
-      `${API_BASE_URL}v1/cities/${cityID}`,
-      {
-        headers: headers,
-      }
-    );
+    return this.httpClient.delete<string>(`${API_BASE_URL}/cities/${cityID}`, {
+      headers: headers,
+    });
   }
 }
